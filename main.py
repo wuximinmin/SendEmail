@@ -1,11 +1,12 @@
 # 导入自定义的函数
 from read_excel import read_excel_file
 from email_content_generator import generate_email_content, create_grades_entry
+from send_email import send_email
 
 
 def main():
     # 定义Excel文件路径，假定文件位于项目的data文件夹下
-    excel_file_path = 'data/成绩表.xlsx'
+    excel_file_path = r'C:\Users\lenovo\Desktop\大学\软件工程\现场编程\pythonProject4\data\成绩表（改）.xlsx'
 
     # 读取Excel文件，获取DataFrame
     df = read_excel_file(excel_file_path)
@@ -24,13 +25,11 @@ def main():
             student_name = df[df['学号'] == student_id]['姓名'].iloc[0]
 
             # 生成电子邮件内容
-            email_content = generate_email_content(student_name, grade_entries)
+            email_content = generate_email_content(student_id, student_name, grade_entries)
 
-            # 在控制台上打印邮件内容，用于测试或查看
-            print(email_content)
+            # 发送邮件
+            send_email(student_name, student_id, email_content)
 
-            # 打印分隔线以区分不同学生的邮件内容
-            print("------------------------------------------------\n")
 
 
 # 确保当该脚本被直接运行时，会调用main函数
