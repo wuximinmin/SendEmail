@@ -6,7 +6,7 @@ from send_email import send_email
 
 def main():
     # 定义Excel文件路径，假定文件位于项目的data文件夹下
-    excel_file_path = r'C:\Users\lenovo\Desktop\大学\软件工程\现场编程\pythonProject4\data\成绩表（改）.xlsx'
+    excel_file_path = 'data/成绩表（改）.xlsx'
 
     # 读取Excel文件，获取DataFrame
     df = read_excel_file(excel_file_path)
